@@ -5,6 +5,7 @@ public class enemy : MonoBehaviour
     public float speed = 1f;
     private Transform target;
     private int waypointIndex = 0;
+    public int health = 10;
 
 
     void Start()
