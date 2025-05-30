@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class tower : MonoBehaviour
 {
-
-    [Header("Enemies Detection")]
     private Transform target;
     private string enemyTag = "Enemy";
 
