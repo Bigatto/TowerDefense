@@ -42,8 +42,7 @@ public class Bullet : MonoBehaviour
         if (target.GetComponent<enemy>().health <= 0)
         {
             Destroy(target.gameObject);
-        }
-        
+        }        
         Destroy(gameObject);
     }
 }
