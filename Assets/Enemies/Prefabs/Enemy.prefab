@@ -101,4 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  attackRange: 0.26
+  attackRate: 1.2
+  attackDamage: 18
+  baseLayer:
+    serializedVersion: 2
+    m_Bits: 0
   health: 10
