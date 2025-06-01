@@ -16,10 +16,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = _target.position - transform.position;
+        Vector2 direction = _target.position - transform.position;
         transform.Translate(direction.normalized * (speed * Time.deltaTime), Space.World);
 
-        if (Vector3.Distance(transform.position, _target.position) <= 0.2f)
+        if (Vector2.Distance(transform.position, _target.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
