@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Base.Scripts
 {
-    public class PlayerBase : MonoBehaviour
+    public class HealthSystem : MonoBehaviour
     {
         [SerializeField] private float maxHealth;
+        [SerializeField] private Image healthUi;
 
         private float _currentHealth;
 
@@ -16,13 +18,19 @@ namespace Base.Scripts
         public void TakeDamage(float damage)
         {
             _currentHealth -= damage;
+            var currentHealthPercent = _currentHealth / maxHealth;
+
+            var imageScale = healthUi.transform.localScale;
+            imageScale.x = currentHealthPercent;
+            healthUi.transform.localScale = imageScale;
+
             if (_currentHealth <= 0)
             {
-                DestroyBase();
+                DestroyObject();
             }
         }
 
-        private void DestroyBase()
+        private void DestroyObject()
         {
             gameObject.SetActive(false);
         }

@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     private Transform _target;
     private int _waypointIndex;
     private float _lastAttackTime;
-    private PlayerBase _playerBase;
+    private HealthSystem _healthSystem;
 
     private void Start()
     {
@@ -45,16 +45,16 @@ public class Enemy : MonoBehaviour
     private bool IsInAttackRange()
     {
         var playerBaseToHit = Physics2D.CircleCast(transform.position, attackRange, Vector2.left).transform;
-        _playerBase = playerBaseToHit != null ? playerBaseToHit.transform.GetComponent<PlayerBase>() : null;
+        _healthSystem = playerBaseToHit != null ? playerBaseToHit.transform.GetComponent<HealthSystem>() : null;
 
-        return _playerBase != null;
+        return _healthSystem != null;
     }
 
     private void AttackBase()
     {
-        if (_playerBase != null)
+        if (_healthSystem != null)
         {
-            _playerBase.TakeDamage(attackDamage);
+            _healthSystem.TakeDamage(attackDamage);
             _lastAttackTime = Time.time;
         }
     }
