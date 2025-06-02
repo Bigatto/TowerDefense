@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - TurretTrigger
+  - TurretPlacementArea
   layers:
   - Default
   - TransparentFX

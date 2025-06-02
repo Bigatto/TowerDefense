@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             _turretToCarry = collision.transform.parent;
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour
             _turretToCarry = null;
         }
     }
+
+
 
     private void TurretCarryingTriggered(InputAction.CallbackContext _)
     {
@@ -62,12 +66,12 @@ public class PlayerController : MonoBehaviour
         }
 
         else if (_isCarrying == false && _turretToCarry != null)
-            {
-                _turretToCarry.SetParent(turrectConnectionPoint);
-                var turretSprite = _turretToCarry.GetComponent<SpriteRenderer>();
-                _turretToCarry.transform.localPosition = new Vector2(0, turretSprite.bounds.extents.y);
-                _isCarrying = true;
-            }
+        {
+            _turretToCarry.SetParent(turrectConnectionPoint);
+            var turretSprite = _turretToCarry.GetComponent<SpriteRenderer>();
+            _turretToCarry.transform.localPosition = new Vector2(0, turretSprite.bounds.extents.y);
+            _isCarrying = true;
+        }
     }
 
 }
