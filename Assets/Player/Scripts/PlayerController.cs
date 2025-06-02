@@ -6,11 +6,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private InputActionAsset playerActions;
     [SerializeField] private Transform turrectConnectionPoint;
-
-    private InputAction _movementAction;
-    private InputAction _turretCarryingAction;
     private Rigidbody2D _rb;
     private Vector2 _velocity;
+    private InputAction _movementAction;
+
+    private bool _isCarrying = false;
+    private InputAction _turretCarryingAction;
     private Transform _turretToCarry;
 
     private void Awake()
@@ -52,14 +53,21 @@ public class PlayerController : MonoBehaviour
 
     private void TurretCarryingTriggered(InputAction.CallbackContext _)
     {
-        if (_turretToCarry != null)
+        if (_isCarrying)
         {
-            _turretToCarry.SetParent(turrectConnectionPoint);
-            var turretSprite = _turretToCarry.GetComponent<SpriteRenderer>();
-            _turretToCarry.transform.localPosition = new Vector2(0, turretSprite.bounds.extents.y);
+            Debug.Log("Dropping tower");
+            turrectConnectionPoint.DetachChildren();
+            _isCarrying = false;
+
         }
 
-        //quando for colocar a torreta no chão, fazer variavel de is carrying, e quano colocar no chao deixa o parent da torre como nulo
+        else if (_isCarrying == false && _turretToCarry != null)
+            {
+                _turretToCarry.SetParent(turrectConnectionPoint);
+                var turretSprite = _turretToCarry.GetComponent<SpriteRenderer>();
+                _turretToCarry.transform.localPosition = new Vector2(0, turretSprite.bounds.extents.y);
+                _isCarrying = true;
+            }
     }
 
 }
