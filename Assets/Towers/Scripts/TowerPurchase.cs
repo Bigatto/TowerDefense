@@ -53,13 +53,11 @@ public class TowerPurchase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return;
         }
         _rend.material.color = hoverColor;
-        Debug.Log("Mouse entered the tower purchase area.");
     }
 
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exited the tower purchase area.");
        _rend.material.color = _startColor;
     }
 

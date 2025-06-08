@@ -11,6 +11,7 @@ public class Tower : MonoBehaviour
     private Transform _target;
     private string _enemyTag = "Enemy";
     private float _fireCountdown = 0f;
+    private float _fireRateMultiplier = 1f;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class Tower : MonoBehaviour
         if (_fireCountdown <= 0f)
         {
             Shoot();
-            _fireCountdown = 1f / fireRate;
+            _fireCountdown = 1f / (fireRate * _fireRateMultiplier);
         }
 
         _fireCountdown -= Time.deltaTime;
@@ -75,5 +76,10 @@ public class Tower : MonoBehaviour
         // Draw a wire sphere to visualize the range of the tower
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void IncreaseFireRate(float ratio)
+    {
+        _fireRateMultiplier = ratio;       
     }
 }

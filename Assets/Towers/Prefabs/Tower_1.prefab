@@ -275,7 +275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b1eac9d07b39f479311b4a9d249764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeSprite:
-  - {fileID: -3964856179284347504, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
-  - {fileID: -7891793613738847529, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
-  - {fileID: 2692938615380330224, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+  upgradeData:
+  - upgradeSprite: {fileID: -3964856179284347504, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+    upgradeRatio: 1
+  - upgradeSprite: {fileID: -7891793613738847529, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+    upgradeRatio: 2
+  - upgradeSprite: {fileID: 2692938615380330224, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+    upgradeRatio: 4
+  tower: {fileID: 7088434627409521378}

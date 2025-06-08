@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -6,19 +7,27 @@ using UnityEngine.EventSystems;
 
 public class TowerUpgrade : MonoBehaviour, IPointerClickHandler
 {
-    private GameObject _tower;
     private int _upgradeLevel = 0; //max 2
-
     private SpriteRenderer _spriteRenderer;
-    [SerializeField] private List<Sprite> upgradeSprite;
+    [SerializeField] private List<TowerUpgradeData> upgradeData;
+    [SerializeField] private Tower tower;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (_upgradeLevel < upgradeSprite.Count -1)
+        if (_upgradeLevel < upgradeData.Count - 1)
         {
             _upgradeLevel++;
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _spriteRenderer.sprite = upgradeSprite[_upgradeLevel];
+            _spriteRenderer.sprite = upgradeData[_upgradeLevel].upgradeSprite;
+            tower.IncreaseFireRate(upgradeData[_upgradeLevel].upgradeRatio);
         }
-        Debug.Log("Tower upgrade area clicked.");
     }
+}
+
+[Serializable]
+public class TowerUpgradeData
+{
+    public Sprite upgradeSprite;
+    public float upgradeRatio;  
+    
 }
