@@ -20,7 +20,7 @@ public class TowerPurchase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         _buildManager = BuildManager.Instance;
     }
     public void OnPointerClick(PointerEventData eventData)
-    { 
+    {
         /*if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
@@ -37,7 +37,9 @@ public class TowerPurchase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return;
         }
         GameObject towerToBuild = _buildManager.GetTowerToBuild();
-        _tower = (GameObject) Instantiate(towerToBuild, transform.position, transform.rotation);
+        _tower = (GameObject)Instantiate(towerToBuild, transform.position, transform.rotation);
+        _buildManager.SetTowerToBuild(null);
+             
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

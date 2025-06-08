@@ -121,9 +121,10 @@ GameObject:
   - component: {fileID: 4210256073583286219}
   - component: {fileID: 7088434627409521378}
   - component: {fileID: 6944294829267889759}
+  - component: {fileID: 704726742465117982}
   m_Layer: 0
   m_Name: Tower_2
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,3 +263,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.625, y: 2.75}
   m_EdgeRadius: 0
+--- !u!114 &704726742465117982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130758813534654720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b1eac9d07b39f479311b4a9d249764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeSprite:
+  - {fileID: -1515134823594722529, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+  - {fileID: -3446471830066921269, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+  - {fileID: 1704872509302500955, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
