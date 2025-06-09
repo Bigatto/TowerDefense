@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
         _target.health -= 1;
         if (_target.health <= 0)
         {
+            PlayerStats.Money += _target.money;
             GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effectIns, 2f);
             Destroy(_target.gameObject);

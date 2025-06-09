@@ -1,47 +1,70 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class TowerPurchase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 
 {
     private Renderer _rend;
     [SerializeField] private Color hoverColor;
+    [SerializeField] private Color noMoneyColor;
+    public Vector3 positionOffset;
     private Color _startColor;
 
-    private GameObject _tower;
- 
+    [Header("Optional")]
+    public GameObject _tower;
+    BuildManager _buildManager;
+
 
     void Start()
     {
         _rend = GetComponent<Renderer>();
         _startColor = _rend.material.color;
+        _buildManager = BuildManager.Instance;
+    }
+
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        /* if (eventData.button == PointerEventData.InputButton.Left)
-         {
-             Debug.Log("Left mouse button clicked on the tower purchase area.");
+        if (!_buildManager.CanBuild)
+        {
+            return;
+        }
 
-         }*/
         if (_tower != null)
         {
             Debug.Log("Tower purchase area clicked.");
             return;
         }
-        GameObject towerToBuild = BuildManager.Instance.GetTowerToBuild();
-        _tower = (GameObject) Instantiate(towerToBuild, transform.position, transform.rotation);
+        _buildManager.BuildTowerOn(this);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _rend.material.color = hoverColor;
-        Debug.Log("Mouse entered the tower purchase area.");
-    }
+        if (_buildManager.HasMoney)
+        {
+            _rend.material.color = hoverColor;
+        }
+        else
+        {
+            _rend.material.color = noMoneyColor;
+        }
 
+        if (!_buildManager.CanBuild)
+        {
+            return;
+        }
+
+        if (_buildManager.HasMoney)
+        {
+            _rend.material.color = hoverColor;
+        }        
+    }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exited the tower purchase area.");
        _rend.material.color = _startColor;
     }
-
 }

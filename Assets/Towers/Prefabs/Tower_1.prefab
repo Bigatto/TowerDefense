@@ -121,9 +121,10 @@ GameObject:
   - component: {fileID: 4210256073583286219}
   - component: {fileID: 7088434627409521378}
   - component: {fileID: 6944294829267889759}
+  - component: {fileID: -2238722548992684800}
   m_Layer: 0
-  m_Name: Tower
-  m_TagString: Untagged
+  m_Name: Tower_1
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2692938615380330224, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+  m_Sprite: {fileID: -3964856179284347504, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -254,7 +255,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.625, y: 2.75}
+    oldSize: {x: 1.6875, y: 1.625}
     newSize: {x: 0.26, y: 0.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -262,3 +263,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.625, y: 2.75}
   m_EdgeRadius: 0
+--- !u!114 &-2238722548992684800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130758813534654720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b1eac9d07b39f479311b4a9d249764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeData:
+  - upgradeSprite: {fileID: -3964856179284347504, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+    upgradeRatio: 1
+  - upgradeSprite: {fileID: -7891793613738847529, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+    upgradeRatio: 2
+  - upgradeSprite: {fileID: 2692938615380330224, guid: eadbe266f9648aa4886f8adc0ff45b82, type: 3}
+    upgradeRatio: 4
+  tower: {fileID: 7088434627409521378}

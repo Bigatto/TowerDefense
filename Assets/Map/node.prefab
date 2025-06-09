@@ -101,7 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ad2130f15f5664a959b2307a65847a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.1273585, b: 0.1273585, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  noMoneyColor: {r: 1, g: 0, b: 0, a: 1}
+  positionOffset: {x: 0, y: 0, z: 0}
+  _tower: {fileID: 0}
 --- !u!61 &1181517757842472598
 BoxCollider2D:
   m_ObjectHideFlags: 0
