@@ -8,9 +8,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRate;
     [SerializeField] private float attackDamage;
     [SerializeField] private LayerMask baseLayer;
-
     public int health = 10;
 
+    [Header("Money Reward")]
+    public int money = 10;
     private Transform _target;
     private int _waypointIndex;
     private float _lastAttackTime;

@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class shop : MonoBehaviour
 {
-
+    public TowerToBuild standardTower;
+    public TowerToBuild anotherTower;
     BuildManager buildManager;
     private void Start()
     {
         buildManager = BuildManager.Instance;
     }
-    public void PurchaseStandardTower()
+    public void SelectStandardTower()
     {
         Debug.Log("Standard Tower selected");
-        buildManager.SetTowerToBuild(buildManager.standardTowerPrefab);
+        buildManager.SelectTowerToBuild(standardTower);
     }
-    public void PurchaseAnotherTower()
+    public void SelectAnotherTower()
     {
         Debug.Log("Another Tower selected");
-        buildManager.SetTowerToBuild(buildManager.anotherTowerPrefab);
+        buildManager.SelectTowerToBuild(anotherTower);
     }
 }

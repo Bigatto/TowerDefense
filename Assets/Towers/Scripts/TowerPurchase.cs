@@ -7,10 +7,13 @@ public class TowerPurchase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     private Renderer _rend;
     [SerializeField] private Color hoverColor;
+    [SerializeField] private Color noMoneyColor;
+    public Vector3 positionOffset;
     private Color _startColor;
 
-    private GameObject _tower;
-    private BuildManager _buildManager;
+    [Header("Optional")]
+    public GameObject _tower;
+    BuildManager _buildManager;
 
 
     void Start()
@@ -19,14 +22,14 @@ public class TowerPurchase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         _startColor = _rend.material.color;
         _buildManager = BuildManager.Instance;
     }
+
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
-        /*if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        } */
-
-        if (_buildManager.GetTowerToBuild() == null)
+        if (!_buildManager.CanBuild)
         {
             return;
         }
@@ -36,29 +39,32 @@ public class TowerPurchase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             Debug.Log("Tower purchase area clicked.");
             return;
         }
-        GameObject towerToBuild = _buildManager.GetTowerToBuild();
-        _tower = (GameObject)Instantiate(towerToBuild, transform.position, transform.rotation);
-        _buildManager.SetTowerToBuild(null);
-             
+        _buildManager.BuildTowerOn(this);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        /*if (EventSystem.current.IsPointerOverGameObject())
+        if (_buildManager.HasMoney)
         {
-            return;
-        }*/
+            _rend.material.color = hoverColor;
+        }
+        else
+        {
+            _rend.material.color = noMoneyColor;
+        }
 
-        if (_buildManager.GetTowerToBuild() == null)
+        if (!_buildManager.CanBuild)
         {
             return;
         }
-        _rend.material.color = hoverColor;
-    }
 
+        if (_buildManager.HasMoney)
+        {
+            _rend.material.color = hoverColor;
+        }        
+    }
 
     public void OnPointerExit(PointerEventData eventData)
     {
        _rend.material.color = _startColor;
     }
-
 }

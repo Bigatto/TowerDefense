@@ -26,6 +26,5 @@ public class TowerUpgrade : MonoBehaviour, IPointerClickHandler
 public class TowerUpgradeData
 {
     public Sprite upgradeSprite;
-    public float upgradeRatio;  
-    
+    public float upgradeRatio;      
 }
