@@ -80,8 +80,6 @@ public class Enemy : MonoBehaviour
     public void takeDamage(float damage)
     {
         maxHealth -= damage;
-        Debug.Log($"Enemy took damage: {damage}, remaining health: {maxHealth}");
-        
         var currentHealthPercent = maxHealth / _currentHealth;
 
         var imageScale = healthUi.transform.localScale;
