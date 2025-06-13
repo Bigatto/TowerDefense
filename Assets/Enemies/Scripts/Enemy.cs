@@ -77,9 +77,11 @@ public class Enemy : MonoBehaviour
         _target = Waypoints.points[_waypointIndex];
     }
 
-    public void takeDamage()
+    public void takeDamage(float damage)
     {
-        maxHealth -= 1; //in the future this should be tower damage
+        maxHealth -= damage;
+        Debug.Log($"Enemy took damage: {damage}, remaining health: {maxHealth}");
+        
         var currentHealthPercent = maxHealth / _currentHealth;
 
         var imageScale = healthUi.transform.localScale;

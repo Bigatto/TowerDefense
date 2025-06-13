@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     public GameObject impactEffect;
 
     private Enemy _target;
+    private Tower _tower;
 
     private void Update()
     {
@@ -20,21 +21,25 @@ public class Bullet : MonoBehaviour
 
         if (dir.magnitude <= distanceThisFrame)
         {
-            HitTarget();
+            HitTarget(_tower.damage);
             return;
         }
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
     }
 
+    public void SetTower(Tower tower)
+    {
+        _tower = tower;
+    }
     public void Seek(Transform target)
     {
         _target = target.GetComponent<Enemy>();
     }
 
-    private void HitTarget()
+    private void HitTarget(float damage)
     {
-        _target.takeDamage();
+        _target.takeDamage(damage);
         Destroy(gameObject);
     }
 }
