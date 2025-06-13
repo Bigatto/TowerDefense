@@ -25,6 +25,10 @@ public class Tower : MonoBehaviour
             return;
         }
 
+		Vector3 direction = _target.position - transform.position;
+		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+		firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
+
         if (_fireCountdown <= 0f)
         {
             Shoot();
@@ -73,7 +77,6 @@ public class Tower : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        // Draw a wire sphere to visualize the range of the tower
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
