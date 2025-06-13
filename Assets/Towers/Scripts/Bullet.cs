@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 70f;
-    [SerializeField] private GameObject impactEffect;
+    public GameObject impactEffect;
 
     private Enemy _target;
 
@@ -34,15 +34,7 @@ public class Bullet : MonoBehaviour
 
     private void HitTarget()
     {
-        _target.health -= 1;
-        if (_target.health <= 0)
-        {
-            PlayerStats.Money += _target.money;
-            GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effectIns, 2f);
-            Destroy(_target.gameObject);
-        }
-
+        _target.takeDamage();
         Destroy(gameObject);
     }
 }
