@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 2724525967178029473}
   - component: {fileID: 459343487181494811}
   - component: {fileID: 1831248825663197639}
+  - component: {fileID: -1764222016461763991}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -364,3 +365,17 @@ MonoBehaviour:
   maxHealth: 10
   healthUi: {fileID: 72660656592000767}
   money: 10
+--- !u!114 &-1764222016461763991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462155750438427022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610f54c1d7a9ea549a6f102b0a702459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthUi: {fileID: 72660656592000767}

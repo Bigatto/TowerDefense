@@ -5,7 +5,7 @@ public class Tower : MonoBehaviour
     [Header("Tower Attributes")]
     [SerializeField] private float range = 5f;
     [SerializeField] private float fireRate = 1f;
-    public float damage = 10f;
+    [SerializeField] private float damage = 10f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
@@ -70,7 +70,7 @@ public class Tower : MonoBehaviour
     {
         GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGo.GetComponent<Bullet>();
-        bullet.SetTower(this);
+        bullet.Init(damage);
 
         if (bullet != null)
         {

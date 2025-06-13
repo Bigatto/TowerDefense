@@ -8,10 +8,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float attackRate;
     [SerializeField] private float attackDamage;
-    [SerializeField] private LayerMask baseLayer;
-    [SerializeField] private float maxHealth = 10;
-    [SerializeField] private Image healthUi;
-    private float _currentHealth;
 
     [Header("Money Reward")]
     public int money = 10;
@@ -23,7 +19,6 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _target = Waypoints.points[0];
-        _currentHealth = maxHealth;
     }
 
     private void Update()
@@ -75,22 +70,6 @@ public class Enemy : MonoBehaviour
 
         _waypointIndex++;
         _target = Waypoints.points[_waypointIndex];
-    }
-
-    public void takeDamage(float damage)
-    {
-        maxHealth -= damage;
-        var currentHealthPercent = maxHealth / _currentHealth;
-
-        var imageScale = healthUi.transform.localScale;
-        imageScale.x = currentHealthPercent;
-        healthUi.transform.localScale = imageScale;
-
-        if (maxHealth <= 0)
-        {
-            PlayerStats.Money += money;
-            Destroy(gameObject);
-        }
     }
 
     private void OnDrawGizmos()

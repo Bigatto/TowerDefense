@@ -1,4 +1,6 @@
+using Base.Scripts;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Bullet : MonoBehaviour
 {
@@ -6,7 +8,7 @@ public class Bullet : MonoBehaviour
     public GameObject impactEffect;
 
     private Enemy _target;
-    private Tower _tower;
+    private float _damage;
 
     private void Update()
     {
@@ -21,25 +23,26 @@ public class Bullet : MonoBehaviour
 
         if (dir.magnitude <= distanceThisFrame)
         {
-            HitTarget(_tower.damage);
+            HitTarget();
             return;
         }
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
     }
 
-    public void SetTower(Tower tower)
-    {
-        _tower = tower;
-    }
     public void Seek(Transform target)
     {
         _target = target.GetComponent<Enemy>();
     }
 
-    private void HitTarget(float damage)
+    public void Init(float damage)
     {
-        _target.takeDamage(damage);
+        _damage = damage;
+    }
+
+    private void HitTarget()
+    {
+        _target.GetComponent<HealthSystem>().TakeDamage(_damage);
         Destroy(gameObject);
     }
 }
