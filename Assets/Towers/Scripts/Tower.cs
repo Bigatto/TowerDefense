@@ -5,6 +5,7 @@ public class Tower : MonoBehaviour
     [Header("Tower Attributes")]
     [SerializeField] private float range = 5f;
     [SerializeField] private float fireRate = 1f;
+    [SerializeField] private float damage = 10f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
@@ -17,6 +18,7 @@ public class Tower : MonoBehaviour
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
+    
 
     private void Update()
     {
@@ -25,9 +27,9 @@ public class Tower : MonoBehaviour
             return;
         }
 
-		Vector3 direction = _target.position - transform.position;
-		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
+        Vector3 direction = _target.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
 
         if (_fireCountdown <= 0f)
         {
@@ -66,8 +68,9 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bulletGo = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGo.GetComponent<Bullet>();
+        bullet.Init(damage);
 
         if (bullet != null)
         {

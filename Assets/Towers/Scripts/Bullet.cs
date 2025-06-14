@@ -1,11 +1,14 @@
+using Base.Scripts;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 70f;
-    [SerializeField] private GameObject impactEffect;
+    public GameObject impactEffect;
 
     private Enemy _target;
+    private float _damage;
 
     private void Update()
     {
@@ -32,17 +35,14 @@ public class Bullet : MonoBehaviour
         _target = target.GetComponent<Enemy>();
     }
 
+    public void Init(float damage)
+    {
+        _damage = damage;
+    }
+
     private void HitTarget()
     {
-        _target.health -= 1;
-        if (_target.health <= 0)
-        {
-            PlayerStats.Money += _target.money;
-            GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effectIns, 2f);
-            Destroy(_target.gameObject);
-        }
-
+        _target.GetComponent<HealthSystem>().TakeDamage(_damage);
         Destroy(gameObject);
     }
 }

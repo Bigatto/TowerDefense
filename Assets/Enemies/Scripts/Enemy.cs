@@ -1,5 +1,6 @@
 using Base.Scripts;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -7,8 +8,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float attackRate;
     [SerializeField] private float attackDamage;
-    [SerializeField] private LayerMask baseLayer;
-    public int health = 10;
 
     [Header("Money Reward")]
     public int money = 10;
@@ -64,6 +63,7 @@ public class Enemy : MonoBehaviour
     {
         if (_waypointIndex >= Waypoints.points.Length - 1)
         {
+            PlayerStats.Lives--;
             Destroy(gameObject);
             return;
         }
